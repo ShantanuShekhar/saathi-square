@@ -1,0 +1,16 @@
+package com.saathisquare.societyservice;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
+
+@SpringBootApplication
+@EnableDiscoveryClient
+@EnableFeignClients(basePackages = "com.saathisquare.societyservice.client")
+public class SocietyServiceApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(SocietyServiceApplication.class, args);
+	}
+}
