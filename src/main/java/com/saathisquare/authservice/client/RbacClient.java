@@ -7,13 +7,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.saathisquare.authservice.config.FeignClientFactory;
 import com.saathisquare.authservice.dto.request.SignupRequest;
 import com.saathisquare.authservice.dto.request.UserDetailsRequest;
 import com.saathisquare.authservice.dto.response.UserDetailsResponse;
 import com.saathisquare.authservice.util.Response;
 
-@FeignClient(name = "rbac-service", configuration = FeignClientFactory.class)
+@FeignClient(name = "rbac-service", url = "${rbac-service.base-url}")
 public interface RbacClient {
 
 	@PostMapping("/api/create/user")
