@@ -1,3 +1,5 @@
+
+// src/main/java/com/saathisquare/societyservice/controller/SocietyController.java
 package com.saathisquare.societyservice.controller;
 
 import java.util.UUID;
@@ -22,6 +24,12 @@ import com.saathisquare.societyservice.util.Response;
 
 import lombok.RequiredArgsConstructor;
 
+
+//The SocietyController handles HTTP requests related to society management. 
+//It exposes RESTful endpoints for creating societies, fetching details, 
+//paginated listing, and retrieving user-society mapping counts.
+
+
 @RestController
 @RequestMapping("/api/societies")
 @RequiredArgsConstructor
@@ -38,25 +46,13 @@ public class SocietyController {
 		return ResponseEntity.ok(service.getSocietyDetailsBySocietyId(id, username));
 	}
 
-	@GetMapping("/{all}")
+	@PostMapping("/paginated")
 	public ResponseEntity<Response<PaginatedResponse<Society>>> getAll(@RequestBody SocietyDataRequest request) {
 		return ResponseEntity.ok(service.getAllPaginated(request));
 	}
 
-	@GetMapping("/{id}/getCount")
+	@GetMapping("/{id}/count")
 	public ResponseEntity<Response<UserSocietyDashboardCount>> getSocietyMappingCount(@PathVariable String id) {
 		return ResponseEntity.ok(service.getSocietyMappingCountByUserId(id));
 	}
-	
-//	@PostMapping("/tower")
-//	public ResponseEntity<Response<UserSocietyDashboardCount>> getSocietyMappingCount(@PathVariable String id) {
-//		return ResponseEntity.ok(service.getSocietyMappingCountByUserId(id));
-//	}
-//	
-//	@PostMapping("/floor")
-//	public ResponseEntity<Response<UserSocietyDashboardCount>> getSocietyMappingCount(@PathVariable String id) {
-//		return ResponseEntity.ok(service.getSocietyMappingCountByUserId(id));
-//	}
-	
-
 }
